@@ -1,89 +1,44 @@
-# Jobly — Modern Job Board Platform
+# Jobly
 
-Jobly is a modern and responsive job board platform built with **React** and **Vite**.
+A modern and responsive job discovery platform built with React and Tailwind CSS.
 
-The project focuses on creating a clean, professional, and user-friendly job search experience while demonstrating practical frontend development skills such as component-based architecture, client-side routing, responsive design, filtering, sorting, and interactive UI states.
+Jobly allows users to explore job opportunities, search and filter listings, discover companies, view detailed job and company information, and save interesting jobs for later.
 
-## 🚀 Live Demo
+## Features
 
-Coming soon.
+* Responsive job listing experience
+* Search jobs by title, company, or category
+* Filter jobs by location, employment type, experience level, and remote availability
+* Sort jobs by relevance, newest, oldest, and salary
+* Persist search and filter state through URL query parameters
+* Dynamic job detail pages
+* Company directory and dynamic company detail pages
+* Display company-specific job openings
+* Save and remove jobs from a personal saved list
+* Persist saved jobs using LocalStorage
+* Responsive mobile navigation
+* Route-aware navigation
+* Automatic scroll-to-top on route changes
+* Smooth page transitions between routes
+* Responsive design across desktop, tablet, and mobile devices
+* Empty states for pages without available results
 
-## 📸 Preview
+## Tech Stack
 
-Coming soon.
+* React
+* Vite
+* JavaScript
+* React Router
+* Tailwind CSS
+* Framer Motion
+* Lucide React
+* React Icons
+* LocalStorage
+* Git
 
-## ✨ Features
+## Project Structure
 
-### Job Search
-
-* Search jobs by title, company, or keyword
-* Search jobs by location
-* Live filtering of job results
-* Results count based on current search and filters
-
-### Job Filters
-
-* Filter by location
-* Filter by job type
-
-  * Full-time
-  * Part-time
-  * Contract
-  * Internship
-* Filter by experience level
-
-  * Entry-level
-  * Mid-level
-  * Senior
-* Remote-only filter
-* Clear individual filters
-* Clear all filters
-
-### Job Sorting
-
-Jobs can currently be sorted by:
-
-* Most Relevant
-* Newest
-* Oldest
-* Highest Salary
-
-### Responsive Design
-
-Jobly is designed to work across:
-
-* Desktop
-* Laptop
-* Tablet
-* Mobile
-
-The Jobs page includes a dedicated mobile filter drawer for smaller screens.
-
-### Navigation
-
-The project uses React Router for client-side navigation.
-
-Current routes include:
-
-/                   Home
-/jobs               Jobs
-/companies          Companies
-/companies/featured Featured Companies
-/companies/remote   Remote Companies
-/about              About
-
-
-The navigation system also includes:
-
-* Route-aware active navigation
-* Responsive mobile/tablet navigation
-* Companies dropdown
-* Sticky navigation bar
-* Scroll progress indicator
-* Back-to-top button
-
-## 🧩 Project Structure
-
+```text
 src/
 ├── components/
 │   ├── Navbar.jsx
@@ -91,142 +46,138 @@ src/
 │   ├── SearchBar.jsx
 │   ├── JobCard.jsx
 │   ├── JobFilters.jsx
-│   └── Footer.jsx
+│   ├── Footer.jsx
+│   ├── ScrollToTop.jsx
+│   └── PageTransition.jsx
+│
+├── context/
+│   └── SavedJobsContext.jsx
+│
+├── hooks/
+│   └── useSavedJobs.js
 │
 ├── pages/
 │   ├── Home.jsx
-│   └── Jobs.jsx
+│   ├── Jobs.jsx
+│   ├── JobDetails.jsx
+│   ├── SavedJobs.jsx
+│   ├── Companies.jsx
+│   ├── CompanyDetails.jsx
+│   └── About.jsx
 │
 ├── data/
-│   └── jobs.js
+│   ├── jobs.js
+│   └── companies.js
 │
 ├── App.jsx
 ├── main.jsx
 └── index.css
+```
 
-## 🛠️ Tech Stack
+## Application Routes
 
-### Frontend
+| Route            | Description                        |
+| ---------------- | ---------------------------------- |
+| `/`              | Home page                          |
+| `/jobs`          | Job listings and search            |
+| `/jobs/:id`      | Job details                        |
+| `/saved-jobs`    | Saved jobs                         |
+| `/companies`     | Company directory                  |
+| `/companies/:id` | Company details and available jobs |
+| `/about`         | About Jobly                        |
 
-* React
-* JavaScript
-* Vite
-* React Router
-* Tailwind CSS
-* CSS
+## Getting Started
 
-### UI & Icons
+### Prerequisites
 
-* Lucide React
-* React Icons
+Make sure you have Node.js and npm installed.
 
-### Development Tools
-
-* Git
-* GitHub
-* VS Code
-
-## 🎯 Project Goals
-
-Jobly was built as a frontend portfolio project with a focus on:
-
-* Component-based React architecture
-* Reusable components
-* Responsive UI development
-* Client-side routing
-* State management with React hooks
-* Search and filtering logic
-* Sorting and derived data
-* Mobile-first interaction patterns
-* Clean and maintainable project structure
-* Professional UI/UX
-
-## 🔍 Current Job Data
-
-The current version uses local mock data for job listings.
-
-Example job information includes:
-
-Title
-Company
-Location
-Job Type
-Experience Level
-Salary
-Remote Availability
-Posted Date
-Category
-
-No backend or external job API is currently connected.
-
-## 📱 Responsive Experience
-
-The interface adapts to different screen sizes with dedicated layouts and interactions.
-
-On smaller screens, the navigation changes into a slide-out menu and job filters are presented through a mobile drawer.
-
-## 🧠 What I Practiced
-
-While building Jobly, I worked with concepts including:
-
-* React component composition
-* Props
-* `useState`
-* `useEffect`
-* `useMemo`
-* React Router
-* `NavLink`
-* Dynamic filtering
-* Sorting arrays
-* Conditional rendering
-* Responsive Tailwind CSS
-* Mobile navigation patterns
-* UI state management
-* Empty states
-* Reusable UI components
-
-## 🔮 Planned Improvements
-
-The project is still under development.
-
-Planned features include:
-
-* Job details pages
-* Dynamic job routes
-* Bookmarking jobs
-* Saved jobs page
-* URL-based search and filters
-* Pagination or load more
-* Loading and error states
-* Company pages
-* Improved job/company branding
-* Backend integration
-* Real job data API
-
-## 📦 Installation
+### Installation
 
 Clone the repository:
 
-git clone https://github.com/amirkermani-code/jobly.git
-
+```bash
+git clone <your-repository-url>
+```
 
 Navigate into the project:
 
+```bash
 cd jobly
-
+```
 
 Install dependencies:
 
+```bash
 npm install
-
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
+The application will be available at the local development URL provided by Vite.
 
-The application will then be available at the local development URL provided by Vite.
+## Data Architecture
 
-## 📄 License
+Jobly currently uses local JavaScript data files to simulate a job platform.
 
-This project is currently intended as a personal frontend portfolio project.
+Jobs and companies are connected through a `companyId` relationship:
+
+```js
+{
+  id: 1,
+  title: "Frontend Developer",
+  company: "TechFlow",
+  companyId: 1,
+}
+```
+
+This allows company detail pages to dynamically display the jobs associated with each company without duplicating job data.
+
+## State Management
+
+Saved jobs are managed using React Context and persisted with LocalStorage.
+
+The saved job state is shared across the application through:
+
+```text
+SavedJobsProvider
+        ↓
+useSavedJobs
+        ↓
+JobCard / SavedJobs
+```
+
+Search and filtering state is synchronized with the URL using React Router's `useSearchParams`, allowing filtered job pages to be bookmarked or shared.
+
+## Design Goals
+
+Jobly was built with a focus on:
+
+* Clean and consistent UI
+* Responsive design
+* Reusable React components
+* Data-driven rendering
+* Simple and maintainable architecture
+* Clear navigation and user experience
+* Practical state management without unnecessary complexity
+
+## Future Improvements
+
+Possible future improvements include:
+
+* Backend API integration
+* User authentication
+* Real job and company data
+* Job application functionality
+* Advanced job recommendations
+* Company logos and richer company profiles
+* Pagination or infinite scrolling
+* Job posting functionality
+
+## License
+
+This project was created as a frontend portfolio project.
