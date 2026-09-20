@@ -1,12 +1,13 @@
-import {
-  Bookmark,
-  BriefcaseBusiness,
-  Clock3,
-  MapPin,
-} from "lucide-react";
+import { Bookmark, BriefcaseBusiness, Clock3, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import useSavedJobs from "../hooks/useSavedJobs";
+
 function JobCard({ job }) {
+  const { isSaved, toggleSave } = useSavedJobs();
+
+  const saved = isSaved(job.id);
+
   return (
     <article className="group rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg">
       <div className="flex items-start justify-between gap-4">
@@ -16,10 +17,17 @@ function JobCard({ job }) {
 
         <button
           type="button"
-          aria-label={`Save ${job.title}`}
-          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-gray-400 transition hover:bg-gray-100 hover:text-blue-600"
+          onClick={() => toggleSave(job.id)}
+          aria-label={
+            saved ? `Remove ${job.title} from saved jobs` : `Save ${job.title}`
+          }
+          className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition ${
+            saved
+              ? "bg-blue-50 text-blue-600"
+              : "text-gray-400 hover:bg-gray-100 hover:text-blue-600"
+          }`}
         >
-          <Bookmark size={18} />
+          <Bookmark size={18} fill={saved ? "currentColor" : "none"} />
         </button>
       </div>
 
@@ -28,9 +36,7 @@ function JobCard({ job }) {
           {job.title}
         </h2>
 
-        <p className="mt-1 text-sm font-medium text-gray-600">
-          {job.company}
-        </p>
+        <p className="mt-1 text-sm font-medium text-gray-600">{job.company}</p>
       </div>
 
       <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
@@ -56,9 +62,7 @@ function JobCard({ job }) {
 
       <div className="mt-5 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold text-gray-900">
-            {job.salary}
-          </p>
+          <p className="text-sm font-semibold text-gray-900">{job.salary}</p>
 
           <div className="mt-1 flex items-center gap-1.5 text-xs text-gray-400">
             <Clock3 size={13} />
