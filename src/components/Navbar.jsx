@@ -1,6 +1,4 @@
-
 import {
-  ArrowRight,
   ArrowUp,
   BriefcaseBusiness,
   Building2,
@@ -131,6 +129,7 @@ function Navbar() {
                 className="flex cursor-pointer items-center gap-1 text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900"
               >
                 Companies
+
                 <ChevronDown
                   size={15}
                   className={`transition-transform duration-200 ${
@@ -188,18 +187,10 @@ function Navbar() {
           {/* Desktop Actions */}
           <div className="ml-auto hidden items-center gap-3 lg:flex">
             <Link
-              to="/signin"
-              className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-50 hover:text-gray-900"
+              to="/sign-in"
+              className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition bg-blue-600 hover:bg-blue-700"
             >
               Sign In
-            </Link>
-
-            <Link
-              to="/get-started"
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
-            >
-              Get Started
-              <ArrowRight size={16} />
             </Link>
           </div>
 
@@ -362,22 +353,14 @@ function Navbar() {
             About
           </NavLink>
 
+          {/* Mobile Actions */}
           <div className="mt-6 border-t border-gray-100 pt-6">
             <Link
-              to="/signin"
+              to="/sign-in"
               onClick={closeMenus}
-              className="flex w-full items-center justify-center rounded-lg border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+              className="flex w-full items-center justify-center rounded-lg border border-blue-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
             >
               Sign In
-            </Link>
-
-            <Link
-              to="/get-started"
-              onClick={closeMenus}
-              className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-            >
-              Get Started
-              <ArrowRight size={16} />
             </Link>
           </div>
         </div>

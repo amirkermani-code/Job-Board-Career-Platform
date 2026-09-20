@@ -1,39 +1,47 @@
 # Jobly
 
-A modern and responsive job discovery platform built with React and Tailwind CSS.
+Jobly is a modern and responsive job board frontend built with React, Vite, JavaScript, Tailwind CSS, and React Router.
 
-Jobly allows users to explore job opportunities, search and filter listings, discover companies, view detailed job and company information, and save interesting jobs for later.
+The project is designed as a frontend portfolio project that demonstrates modern React development, reusable components, responsive UI design, client-side routing, URL-based filtering, persistent state management, and interactive user experiences.
 
 ## Features
 
-* Responsive job listing experience
-* Search jobs by title, company, or category
-* Filter jobs by location, employment type, experience level, and remote availability
-* Sort jobs by relevance, newest, oldest, and salary
-* Persist search and filter state through URL query parameters
+* Responsive job board interface
+* Job search by title, company, category, and location
+* Job type filtering
+* Experience level filtering
+* Remote job filtering
+* Job sorting
+* URL-based job filters
 * Dynamic job detail pages
-* Company directory and dynamic company detail pages
-* Display company-specific job openings
-* Save and remove jobs from a personal saved list
-* Persist saved jobs using LocalStorage
-* Responsive mobile navigation
+* Save and unsave jobs
+* Persistent saved jobs using localStorage
+* Company listing and company detail pages
+* Related jobs for each company
+* Responsive navigation with mobile drawer
+* Companies dropdown navigation
+* Scroll progress indicator
+* Back-to-top button
 * Route-aware navigation
-* Automatic scroll-to-top on route changes
-* Smooth page transitions between routes
-* Responsive design across desktop, tablet, and mobile devices
-* Empty states for pages without available results
+* Page transition animations
+* Sign in and sign up UI
+* Client-side form validation
+* Responsive About page
+* Dynamic platform statistics
+* Empty states for jobs and saved jobs
+* Accessible form labels and interactive controls
 
 ## Tech Stack
 
 * React
 * Vite
 * JavaScript
-* React Router
 * Tailwind CSS
+* React Router
 * Framer Motion
 * Lucide React
 * React Icons
-* LocalStorage
+* CSS
 * Git
 
 ## Project Structure
@@ -63,7 +71,9 @@ src/
 │   ├── SavedJobs.jsx
 │   ├── Companies.jsx
 │   ├── CompanyDetails.jsx
-│   └── About.jsx
+│   ├── About.jsx
+│   ├── SignIn.jsx
+│   └── SignUp.jsx
 │
 ├── data/
 │   ├── jobs.js
@@ -74,57 +84,27 @@ src/
 └── index.css
 ```
 
-## Application Routes
+## Routes
 
-| Route            | Description                        |
-| ---------------- | ---------------------------------- |
-| `/`              | Home page                          |
-| `/jobs`          | Job listings and search            |
-| `/jobs/:id`      | Job details                        |
-| `/saved-jobs`    | Saved jobs                         |
-| `/companies`     | Company directory                  |
-| `/companies/:id` | Company details and available jobs |
-| `/about`         | About Jobly                        |
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have Node.js and npm installed.
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone <your-repository-url>
-```
-
-Navigate into the project:
-
-```bash
-cd jobly
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The application will be available at the local development URL provided by Vite.
+| Route            | Description              |
+| ---------------- | ------------------------ |
+| `/`              | Home page                |
+| `/jobs`          | Job listings and filters |
+| `/jobs/:id`      | Dynamic job details      |
+| `/saved-jobs`    | Saved jobs               |
+| `/companies`     | Company directory        |
+| `/companies/:id` | Dynamic company details  |
+| `/about`         | About Jobly              |
+| `/sign-in`       | Sign in interface        |
+| `/sign-up`       | Sign up interface        |
 
 ## Data Architecture
 
-Jobly currently uses local JavaScript data files to simulate a job platform.
+Jobly currently uses local mock data rather than an external API.
 
-Jobs and companies are connected through a `companyId` relationship:
+Jobs and companies are stored separately and connected through `companyId`.
+
+For example:
 
 ```js
 {
@@ -132,51 +112,111 @@ Jobs and companies are connected through a `companyId` relationship:
   title: "Frontend Developer",
   company: "TechFlow",
   companyId: 1,
+  location: "Berlin, Germany",
+  type: "Full-time"
 }
 ```
 
-This allows company detail pages to dynamically display the jobs associated with each company without duplicating job data.
+This relationship allows company pages to dynamically display their related job openings.
 
 ## State Management
 
-Saved jobs are managed using React Context and persisted with LocalStorage.
+Jobly uses React Context for saved job management.
 
-The saved job state is shared across the application through:
+Saved job IDs are persisted to `localStorage`, allowing users to keep their saved jobs after refreshing the page.
+
+The project currently uses:
+
+* React Context
+* Custom React hooks
+* Local component state
+* URL query parameters
+* localStorage
+
+## URL-Based Filtering
+
+The Jobs page stores filter and sorting state in the URL.
+
+Example:
 
 ```text
-SavedJobsProvider
-        ↓
-useSavedJobs
-        ↓
-JobCard / SavedJobs
+/jobs?search=React&location=Berlin&remote=true&sort=newest
 ```
 
-Search and filtering state is synchronized with the URL using React Router's `useSearchParams`, allowing filtered job pages to be bookmarked or shared.
+This makes filtered job results shareable and allows the application to restore the current filter state when the page is refreshed.
+
+## Authentication
+
+The project currently includes frontend authentication interfaces for:
+
+* Sign in
+* Sign up
+* Password visibility toggling
+* Basic form validation
+
+Authentication is currently UI-only and does not connect to a backend authentication service.
+
+A future version can connect these interfaces to a backend API and implement real user authentication.
 
 ## Design Goals
 
-Jobly was built with a focus on:
+The main design goals of Jobly are:
 
-* Clean and consistent UI
-* Responsive design
+* Clean and modern visual design
+* Responsive layouts across screen sizes
+* Consistent spacing and typography
 * Reusable React components
-* Data-driven rendering
-* Simple and maintainable architecture
-* Clear navigation and user experience
-* Practical state management without unnecessary complexity
+* Clear navigation and user flows
+* Accessible interactive elements
+* Practical state management
+* Maintainable project structure
+* Minimal unnecessary complexity
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+```
+
+### 2. Navigate to the project
+
+```bash
+cd jobly
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+The application will be available at the local development URL provided by Vite.
 
 ## Future Improvements
 
-Possible future improvements include:
+Potential future improvements include:
 
 * Backend API integration
-* User authentication
-* Real job and company data
+* Real authentication and authorization
+* User profiles
 * Job application functionality
-* Advanced job recommendations
-* Company logos and richer company profiles
-* Pagination or infinite scrolling
+* Employer accounts
 * Job posting functionality
+* Real job search API integration
+* Advanced company filtering
+* Pagination
+* Notifications
+* Production database integration
+* Automated testing
+* Deployment and CI/CD
 
 ## License
 

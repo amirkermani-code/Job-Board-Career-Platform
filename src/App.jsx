@@ -12,6 +12,8 @@ import SavedJobs from "./pages/SavedJobs";
 import Companies from "./pages/Companies";
 import CompanyDetails from "./pages/CompanyDetails";
 import About from "./pages/About";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -81,6 +83,24 @@ function App() {
             element={
               <PageTransition>
                 <About />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/sign-in"
+            element={
+              <PageTransition>
+                <SignIn />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/sign-up"
+            element={
+              <PageTransition>
+                <SignUp />
               </PageTransition>
             }
           />
