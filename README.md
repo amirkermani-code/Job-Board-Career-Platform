@@ -207,7 +207,7 @@ Planned features include:
 
 Clone the repository:
 
-git clone https://github.com/your-username/jobly.git
+git clone https://github.com/amirkermani-code/jobly.git
 
 
 Navigate into the project:
