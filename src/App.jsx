@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import JobDetails from "./pages/JobDetails";
 import SavedJobs from "./pages/SavedJobs";
+import Companies from "./pages/Companies";
+import CompanyDetails from "./pages/CompanyDetails";
 
 function App() {
   return (
@@ -21,7 +23,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
-          <Route path="/jobs/saved-jobs" element={<SavedJobs />} />
+          <Route path="/saved-jobs" element={<SavedJobs />} />
+
+          <Route path="/companies" element={<Companies />} />
+          <Route
+            path="/companies/:id"
+            element={<CompanyDetails />}
+          />
         </Routes>
       </SavedJobsProvider>
     </BrowserRouter>
