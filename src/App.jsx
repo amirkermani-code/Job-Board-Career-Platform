@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import SavedJobsProvider from "./context/SavedJobsContext";
+import PageTransition from "./components/PageTransition";
 
 import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
@@ -21,14 +22,68 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/jobs/:id" element={<JobDetails />} />
-          <Route path="/saved-jobs" element={<SavedJobs />} />
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            }
+          />
 
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/companies/:id" element={<CompanyDetails />} />
-          <Route path="/about" element={<About />} />
+          <Route
+            path="/jobs"
+            element={
+              <PageTransition>
+                <Jobs />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/jobs/:id"
+            element={
+              <PageTransition>
+                <JobDetails />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/saved-jobs"
+            element={
+              <PageTransition>
+                <SavedJobs />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/companies"
+            element={
+              <PageTransition>
+                <Companies />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/companies/:id"
+            element={
+              <PageTransition>
+                <CompanyDetails />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/about"
+            element={
+              <PageTransition>
+                <About />
+              </PageTransition>
+            }
+          />
         </Routes>
       </SavedJobsProvider>
     </BrowserRouter>
