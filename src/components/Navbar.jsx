@@ -358,7 +358,7 @@ function Navbar() {
             <Link
               to="/sign-in"
               onClick={closeMenus}
-              className="flex w-full items-center justify-center rounded-lg border border-blue-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+              className="flex w-full items-center justify-center rounded-lg border border-blue-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-blue-700 bg-blue-600"
             >
               Sign In
             </Link>
